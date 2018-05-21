@@ -150,7 +150,7 @@ class UtilsLibrary {
 
             String line;
             while ((line = reader.readLine()) != null) {
-                Log.e(UtilsLibrary.class.getSimpleName(), "line : " + line);
+//                Log.e(UtilsLibrary.class.getSimpleName(), "line : " + line);
                 switch (updateFrom) {
                     default:
                         if (line.contains(Config.PLAY_STORE_NEW_TAG_RELEASE)) {
