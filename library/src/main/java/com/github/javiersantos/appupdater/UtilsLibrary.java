@@ -151,7 +151,7 @@ class UtilsLibrary {
             while ((line = reader.readLine()) != null) {
                 switch (updateFrom) {
                     default:
-                        if (line.contains(Config.PLAY_STORE_TAG_RELEASE)) {
+                        if (line.contains(Config.PLAY_STORE_NEW_TAG_RELEASE)) {
                             str.append(line);
                             isAvailable = true;
                         }
@@ -204,7 +204,7 @@ class UtilsLibrary {
         if (isAvailable) {
             switch (updateFrom) {
                 default:
-                    String[] splitPlayStore = source.split(Config.PLAY_STORE_TAG_RELEASE);
+                    String[] splitPlayStore = source.split(Config.PLAY_STORE_NEW_TAG_RELEASE);
                     if (splitPlayStore.length > 1) {
                         splitPlayStore = splitPlayStore[1].split("(<)");
                         version = splitPlayStore[0].trim();
