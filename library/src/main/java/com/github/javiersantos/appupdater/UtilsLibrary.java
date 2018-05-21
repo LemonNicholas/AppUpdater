@@ -88,7 +88,8 @@ class UtilsLibrary {
         try {
             new URL(s);
             res = true;
-        } catch (MalformedURLException ignored) {}
+        } catch (MalformedURLException ignored) {
+        }
 
         return res;
     }
@@ -110,7 +111,7 @@ class UtilsLibrary {
 
         switch (updateFrom) {
             default:
-                res = String.format(Config.PLAY_STORE_URL, getAppPackageName(context), Locale.getDefault().getLanguage());
+                res = String.format(Config.PLAY_STORE_URL, getAppPackageName(context), "en"/*Locale.getDefault().getLanguage()*/);
                 break;
             case GITHUB:
                 res = Config.GITHUB_URL + gitHub.getGitHubUser() + "/" + gitHub.getGitHubRepo() + "/releases";
@@ -149,6 +150,7 @@ class UtilsLibrary {
 
             String line;
             while ((line = reader.readLine()) != null) {
+                Log.e(UtilsLibrary.class.getSimpleName(), "line : " + line);
                 switch (updateFrom) {
                     default:
                         if (line.contains(Config.PLAY_STORE_NEW_TAG_RELEASE)) {
@@ -260,7 +262,7 @@ class UtilsLibrary {
     }
 
     static Update getLatestAppVersion(UpdateFrom updateFrom, String url) {
-        if (updateFrom == UpdateFrom.XML){
+        if (updateFrom == UpdateFrom.XML) {
             RssParser parser = new RssParser(url);
             return parser.parse();
         } else {
